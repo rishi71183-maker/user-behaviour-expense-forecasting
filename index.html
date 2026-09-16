@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Forecasting Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="dashboard">
+
+    <header>
+      <div>
+        <h1>SpendWise 📊</h1>
+        <p>Understand your behaviour. Forecast your expenses.</p>
+      </div>
+      <button id="themeBtn">🌙 Dark Mode</button>
+    </header>
+
+    <div class="info-banner">
+      💡 Forecasts are estimates based on your entered historical expenses.
+    </div>
+
+    <main class="layout">
+
+      <!-- Input Section -->
+      <section class="card">
+        <h2>Add Monthly Expense</h2>
+        <p class="subtitle">Enter your spending for a month.</p>
+
+        <form id="expenseForm">
+
+          <label>Month</label>
+          <select id="month" required>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+
+          <label>Food Expense (₹)</label>
+          <input type="number" id="food" placeholder="e.g. 5000" min="0" required>
+
+          <label>Travel Expense (₹)</label>
+          <input type="number" id="travel" placeholder="e.g. 2000" min="0" required>
+
+          <label>Shopping Expense (₹)</label>
+          <input type="number" id="shopping" placeholder="e.g. 3000" min="0" required>
+
+          <label>Bills Expense (₹)</label>
+          <input type="number" id="bills" placeholder="e.g. 2500" min="0" required>
+
+          <label>Entertainment (₹)</label>
+          <input type="number" id="entertainment" placeholder="e.g. 1000" min="0" required>
+
+          <button class="add-btn" type="submit">
+            Add Expense Data
+          </button>
+
+        </form>
+      </section>
+
+      <!-- Dashboard Results -->
+      <section class="results">
+
+        <div class="stats-grid">
+
+          <div class="stat-card purple">
+            <p>Total Recorded Expense</p>
+            <h2 id="totalExpense">₹0</h2>
+            <small>All months</small>
+          </div>
+
+          <div class="stat-card blue">
+            <p>Average Monthly Expense</p>
+            <h2 id="averageExpense">₹0</h2>
+            <small>Historical average</small>
+          </div>
+
+          <div class="stat-card orange">
+            <p>Next Month Forecast</p>
+            <h2 id="forecastExpense">₹0</h2>
+            <small>Estimated expense</small>
+          </div>
+
+          <div class="stat-card green">
+            <p>Spending Behaviour</p>
+            <h2 id="behaviour">-</h2>
+            <small id="behaviourText">Add data to analyse</small>
+          </div>
+
+        </div>
+
+        <!-- Forecast -->
+        <div class="card forecast-card">
+          <div class="card-heading">
+            <h2>Expense Forecast</h2>
+            <span id="trendBadge">No Data</span>
+          </div>
+
+          <div class="forecast-box">
+            <div>
+              <p>Predicted next-month expense</p>
+              <h1 id="forecastLarge">₹0</h1>
+            </div>
+            <div class="forecast-icon">🔮</div>
+          </div>
+
+          <p id="forecastMessage" class="message">
+            Add at least two months of data to generate a forecast.
+          </p>
+        </div>
+
+        <!-- Chart -->
+        <div class="card">
+          <div class="card-heading">
+            <h2>Monthly Expense Trend</h2>
+          </div>
+
+          <div class="chart-container">
+            <canvas id="expenseChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Category Analysis -->
+        <div class="card">
+          <div class="card-heading">
+            <h2>Category Analysis</h2>
+            <span id="topCategory">-</span>
+          </div>
+
+          <div id="categoryList"></div>
+        </div>
+
+        <!-- History -->
+        <div class="card">
+          <div class="card-heading">
+            <h2>Expense History</h2>
+            <button id="clearBtn" class="clear-btn">Clear All</button>
+          </div>
+
+          <div id="historyList"></div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer>
+      <p>SpendWise • Frontend Learning Project</p>
+    </footer>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
